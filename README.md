@@ -43,4 +43,13 @@ To register the users will provide a series of methods that will be located in o
 Next thing we need to do is creating the Sign up page adding a simple form with two fields: email and password.
 To handle the change or submit of the form we need set the initial state of the component and bind the methods to the components scope.
 For the handleChange method used for the modifications on the forms fields we use computed properties to pair up state variables to their values.
+For the handleSubmit we prevent default submissons then use the signup function.
+
+The signin page is similar to the signup page.We'll use the signin method to let the user sign in.
+We can also allow users to authenticate using their Google Account or Github account.
+
+To do that we'll have to enable this sigin option in our Firebase dashboard and add the localhost domain to the whitelist list to prevent spam.
+We'll create and export the sign in function in our helpers directory using a signInWithPopup method that we'll act as a intermediate with Google before redirecting him back to the app.
+Then we'll add this option to our signup page, creating the onClick handler and then bind the handler to the component.
+
 
