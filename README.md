@@ -52,4 +52,16 @@ To do that we'll have to enable this sigin option in our Firebase dashboard and 
 We'll create and export the sign in function in our helpers directory using a signInWithPopup method that we'll act as a intermediate with Google before redirecting him back to the app.
 Then we'll add this option to our signup page, creating the onClick handler and then bind the handler to the component.
 
+To use the Github sigin method we'll need to get the app authorization callback URL from firebase and then register our app on Github to get the client id and client secret.
+Then we'll add the signInWithGithub method to the helpers directory similar to the google sigin.
+After that we'll import this metho to the signup page and add a new button with that option.Then we'll add the click handler and the binder to the component just as in the previous google one.
 
+
+For our database we'll use the Realtime Database that Firebase offers the other possibility being the Cloud Firestore.Both of which are NoSQL databases.
+For our database we'll have a chat node with some children. We'll have to say that the R/W rules will apply only to authenticated users.
+We'll create a Chat.js view that will represent our chatroom page.
+In the componentDidMount method we reference the chat node in our database using db.ref("chat"),listening to the event value which will be added to the chat node.What is returned from the database is an array-like object that we loop through and push each object into an array,setting the chat state variable to the resulting array value.Using the on connection between the client and Firebase means that the value will be added in real time without the need to refresh the page.
+Finally will render our chat putting the chat content and timestamp and also the currently logged in user.
+To be able to send messages will need a form with a input field that would accept a message and a send button.For that will add a form,the value of the input field is bound to our state variable content and we'll call the handleChange when its value changes.
+To submit the form we'll call the handleSubmit handler that we'll prevent any previous errors and then create a reference to the chat node in our database and push a new unique pair with the content, timestamp and the user id that wrote the content and also we'll have to clear the content for our next push to be empty.
+Finally we'll bind our handler to the component.

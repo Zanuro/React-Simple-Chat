@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { signup } from "../helpers/auth";
-import { signin, signInWithGoogle } from "../helpers/auth";
+import { signInWithGoogle, signInWithGitHub } from "../helpers/auth";
 
 export default class Signup extends Component {
 
@@ -15,6 +15,8 @@ export default class Signup extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.googleSignIn = this.googleSignIn.bind(this);
+        this.githubSignIn = this.githubSignIn.bind(this);
+
     }
 
     handleChange(event){
@@ -43,6 +45,15 @@ export default class Signup extends Component {
         }
     }
 
+    async githubSignIn() {
+        try {
+            await signInWithGitHub();
+        }
+        catch(error){
+            this.setState({ error: error.message });
+        }
+    }
+
     render(){
         return (
             <div>
@@ -64,6 +75,9 @@ export default class Signup extends Component {
                         <p>Or choose from this other options:</p>
                         <button onClick={ this.googleSignIn } type="button">
                             Sign up with Google
+                        </button>
+                        <button onClick={ this.githubSignIn } type="button">
+                            Sign up with GitHub
                         </button>
                     </div>
                     <hr></hr>

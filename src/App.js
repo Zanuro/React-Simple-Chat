@@ -5,7 +5,7 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
-import Home from './pages/Home';
+import Home from './pages/';
 import Chat from './pages/Chat';
 import Signup from './pages/Signup';
 import Signin from './pages/Sigin';
